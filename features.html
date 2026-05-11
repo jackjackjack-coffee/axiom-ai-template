@@ -1,0 +1,389 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Features — Axiom AI Platform</title>
+  <meta name="description" content="Every tool you need to ship production AI. NLP, agents, analytics, and more." />
+  <link rel="preconnect" href="https://api.fontshare.com" crossorigin />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%233b82f6'/><text x='50%' y='55%' dominant-baseline='middle' text-anchor='middle' fill='white' font-size='18' font-family='system-ui' font-weight='800'>A</text></svg>" />
+</head>
+<body>
+
+<header class="nav" id="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">Axiom</a>
+    <nav class="nav-links">
+      <a href="features.html" class="active">Features</a>
+      <a href="pricing.html">Pricing</a>
+      <a href="blog.html">Blog</a>
+      <a href="#">Docs</a>
+    </nav>
+    <div class="nav-actions">
+      <a href="#" class="nav-ghost">Sign in</a>
+      <a href="#" class="nav-cta magnetic">Get started</a>
+    </div>
+    <button class="nav-hamburger" aria-label="Open menu"><span></span><span></span></button>
+  </div>
+</header>
+
+<!-- ─── Page hero ─────────────────────────────────────────────────────────── -->
+<section class="feat-hero">
+  <div class="feat-hero-bg" aria-hidden="true">
+    <div class="feat-orb-1"></div>
+    <div class="feat-orb-2"></div>
+  </div>
+  <div class="container">
+    <p class="section-label feat-label">Platform</p>
+    <h1 class="page-hero-title feat-heading">Every tool you need<br>to ship AI</h1>
+    <p class="page-hero-sub">Designed for developers. Built for scale. From a single chatbot to millions of autonomous agent runs per day.</p>
+    <div class="feat-hero-cta">
+      <a href="#" class="btn-primary magnetic">Start building free</a>
+      <a href="pricing.html" class="btn-outline magnetic">View pricing &rarr;</a>
+    </div>
+  </div>
+</section>
+
+<!-- ─── Feature list ──────────────────────────────────────────────────────── -->
+<section class="feat-list">
+  <div class="container">
+
+    <!-- Feature 1: NLP -->
+    <div class="feat-row" data-feat>
+      <div class="feat-copy">
+        <div class="feat-num">01</div>
+        <p class="section-label">Language</p>
+        <h2 class="feat-title">Natural Language Processing</h2>
+        <p class="feat-desc">Understand, classify, and generate text at scale. Axiom's NLP layer supports everything from sentiment analysis to long-form document summarization — across 95+ languages.</p>
+        <ul class="feat-bullets">
+          <li>Embeddings &amp; semantic search</li>
+          <li>Named entity recognition</li>
+          <li>Multilingual translation</li>
+          <li>Structured data extraction</li>
+        </ul>
+        <a href="#" class="btn-primary magnetic" style="margin-top:1.5rem">Explore NLP docs &rarr;</a>
+      </div>
+      <div class="feat-visual">
+        <div class="feat-card">
+          <div class="feat-card-header">
+            <span class="feat-card-dot blue"></span>
+            <span class="feat-card-dot yellow"></span>
+            <span class="feat-card-dot green"></span>
+            <span class="feat-card-title">NLP Playground</span>
+          </div>
+          <div class="nlp-demo">
+            <div class="nlp-input">
+              <span class="nlp-prompt">Input:</span>
+              <p class="nlp-text">"Our Q3 revenue exceeded expectations, growing 40% YoY driven by strong enterprise demand."</p>
+            </div>
+            <div class="nlp-output-grid">
+              <div class="nlp-chip positive">Sentiment: Positive</div>
+              <div class="nlp-chip finance">Domain: Finance</div>
+              <div class="nlp-chip entity">Metric: 40% growth</div>
+              <div class="nlp-chip entity">Period: Q3</div>
+            </div>
+            <div class="nlp-confidence">
+              <span class="conf-label">Confidence</span>
+              <div class="conf-bar-wrap"><div class="conf-bar" style="--w:97%"></div></div>
+              <span class="conf-val">97.3%</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Feature 2: Agents -->
+    <div class="feat-row reverse" data-feat>
+      <div class="feat-copy">
+        <div class="feat-num">02</div>
+        <p class="section-label">Automation</p>
+        <h2 class="feat-title">Autonomous Agents</h2>
+        <p class="feat-desc">Define goals in plain language. Axiom agents reason through complex tasks, use tools, remember context, and self-correct — without you writing a single state machine.</p>
+        <ul class="feat-bullets">
+          <li>Multi-step task planning</li>
+          <li>Tool use &amp; API calls</li>
+          <li>Long-term memory</li>
+          <li>Human-in-the-loop approval</li>
+        </ul>
+        <a href="#" class="btn-primary magnetic" style="margin-top:1.5rem">Explore agents docs &rarr;</a>
+      </div>
+      <div class="feat-visual">
+        <div class="feat-card">
+          <div class="feat-card-header">
+            <span class="feat-card-dot blue"></span>
+            <span class="feat-card-dot yellow"></span>
+            <span class="feat-card-dot green"></span>
+            <span class="feat-card-title">Agent Runtime</span>
+          </div>
+          <div class="agent-demo">
+            <div class="agent-step complete"><span class="ast-icon">&#x2713;</span><span>Retrieved customer record</span><span class="ast-time">12ms</span></div>
+            <div class="agent-step complete"><span class="ast-icon">&#x2713;</span><span>Analyzed purchase history</span><span class="ast-time">38ms</span></div>
+            <div class="agent-step active"><span class="ast-icon spin">&#x25CB;</span><span>Generating recommendation...</span><span class="ast-time">—</span></div>
+            <div class="agent-step pending"><span class="ast-icon">&#x25CB;</span><span>Send personalized email</span><span class="ast-time">—</span></div>
+            <div class="agent-step pending"><span class="ast-icon">&#x25CB;</span><span>Update CRM record</span><span class="ast-time">—</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Feature 3: Analytics -->
+    <div class="feat-row" data-feat>
+      <div class="feat-copy">
+        <div class="feat-num">03</div>
+        <p class="section-label">Observability</p>
+        <h2 class="feat-title">Real-time Analytics</h2>
+        <p class="feat-desc">Every request, token, and agent step — tracked automatically. Axiom's dashboard surfaces performance anomalies before your users notice them.</p>
+        <ul class="feat-bullets">
+          <li>Live request monitoring</li>
+          <li>Latency percentile tracking (p50/p95/p99)</li>
+          <li>Token usage &amp; cost attribution</li>
+          <li>Alerting &amp; custom webhooks</li>
+        </ul>
+        <a href="#" class="btn-primary magnetic" style="margin-top:1.5rem">Explore analytics &rarr;</a>
+      </div>
+      <div class="feat-visual">
+        <div class="feat-card analytics-card">
+          <div class="feat-card-header">
+            <span class="feat-card-dot blue"></span>
+            <span class="feat-card-dot yellow"></span>
+            <span class="feat-card-dot green"></span>
+            <span class="feat-card-title">Live Dashboard</span>
+          </div>
+          <div class="analytics-demo">
+            <div class="analytics-row">
+              <span class="analytics-label">p50 latency</span>
+              <span class="analytics-val green-val">87ms</span>
+            </div>
+            <div class="analytics-row">
+              <span class="analytics-label">p95 latency</span>
+              <span class="analytics-val">142ms</span>
+            </div>
+            <div class="analytics-row">
+              <span class="analytics-label">Error rate</span>
+              <span class="analytics-val green-val">0.03%</span>
+            </div>
+            <div class="analytics-row">
+              <span class="analytics-label">Requests / min</span>
+              <span class="analytics-val ana-live">1,847</span>
+            </div>
+            <div class="mini-sparkline" aria-hidden="true">
+              <svg viewBox="0 0 200 50" fill="none" preserveAspectRatio="none">
+                <path d="M0,40 C20,38 40,20 60,25 C80,30 100,10 120,15 C140,20 160,8 180,5 L200,3" stroke="var(--accent-2)" stroke-width="1.5" fill="none" opacity="0.8"/>
+                <path d="M0,40 C20,38 40,20 60,25 C80,30 100,10 120,15 C140,20 160,8 180,5 L200,3 L200,50 L0,50Z" fill="url(#sparkGrad)"/>
+                <defs>
+                  <linearGradient id="sparkGrad" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stop-color="oklch(62% 0.22 258)" stop-opacity="0.15"/>
+                    <stop offset="100%" stop-color="oklch(62% 0.22 258)" stop-opacity="0"/>
+                  </linearGradient>
+                </defs>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Feature 4: API -->
+    <div class="feat-row reverse" data-feat>
+      <div class="feat-copy">
+        <div class="feat-num">04</div>
+        <p class="section-label">Developer</p>
+        <h2 class="feat-title">API-first Design</h2>
+        <p class="feat-desc">Every feature exposed via REST and GraphQL. SDKs for TypeScript, Python, Go, and Rust. OpenAPI spec included. Integrate in minutes, not days.</p>
+        <ul class="feat-bullets">
+          <li>REST &amp; GraphQL APIs</li>
+          <li>Official SDKs for 4 languages</li>
+          <li>Streaming responses (SSE)</li>
+          <li>Webhooks &amp; event bus</li>
+        </ul>
+        <a href="#" class="btn-primary magnetic" style="margin-top:1.5rem">View API reference &rarr;</a>
+      </div>
+      <div class="feat-visual">
+        <div class="feat-card">
+          <div class="feat-card-header">
+            <span class="feat-card-dot blue"></span>
+            <span class="feat-card-dot yellow"></span>
+            <span class="feat-card-dot green"></span>
+            <span class="feat-card-title">TypeScript SDK</span>
+          </div>
+          <div class="code-block" style="border:none;background:transparent;padding:.5rem 0">
+<span class="code-kw">import</span> { Axiom } <span class="code-kw">from</span> <span class="code-str">"@axiom/sdk"</span>
+
+<span class="code-dim">// Initialize</span>
+<span class="code-kw">const</span> client = <span class="code-kw">new</span> Axiom({
+  apiKey: process.env.<span class="code-kw">AXIOM_KEY</span>
+})
+
+<span class="code-dim">// Stream a response</span>
+<span class="code-kw">const</span> stream = <span class="code-kw">await</span> client.chat.stream({
+  messages: [{ role: <span class="code-str">"user"</span>, content: input }],
+  model: <span class="code-str">"axiom-pro"</span>
+})
+
+<span class="code-kw">for await</span> (<span class="code-kw">const</span> chunk <span class="code-kw">of</span> stream) {
+  process.stdout.write(chunk.delta)
+}</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ─── Feature grid (supplemental) ──────────────────────────────────────── -->
+<section class="feat-grid-section">
+  <div class="container">
+    <div class="section-header center">
+      <p class="section-label">More capabilities</p>
+      <h2 class="section-title">Built for every use case</h2>
+    </div>
+    <div class="feat-mini-grid">
+      <div class="feat-mini-card" data-reveal>
+        <div class="feat-mini-icon">&#x1F512;</div>
+        <h3>Enterprise Security</h3>
+        <p>SOC2 Type II, GDPR, HIPAA compliant. End-to-end encryption and full audit logs.</p>
+      </div>
+      <div class="feat-mini-card" data-reveal>
+        <div class="feat-mini-icon">&#x26A1;</div>
+        <h3>Edge Inference</h3>
+        <p>Run models at the edge with &lt;50ms cold starts across our global CDN network.</p>
+      </div>
+      <div class="feat-mini-card" data-reveal>
+        <div class="feat-mini-icon">&#x1F9E0;</div>
+        <h3>Fine-tuning</h3>
+        <p>Bring your own data. Fine-tune foundation models on your specific domain in hours.</p>
+      </div>
+      <div class="feat-mini-card" data-reveal>
+        <div class="feat-mini-icon">&#x1F4CA;</div>
+        <h3>Vector Store</h3>
+        <p>Built-in vector database with ANN search. Store billions of embeddings, query in milliseconds.</p>
+      </div>
+      <div class="feat-mini-card" data-reveal>
+        <div class="feat-mini-icon">&#x1F504;</div>
+        <h3>Auto-retries</h3>
+        <p>Automatic retry logic, fallback models, and circuit breakers. Zero downtime by design.</p>
+      </div>
+      <div class="feat-mini-card" data-reveal>
+        <div class="feat-mini-icon">&#x1F310;</div>
+        <h3>Multi-region</h3>
+        <p>12 global regions with automatic geo-routing. Comply with data residency requirements.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── CTA ───────────────────────────────────────────────────────────────── -->
+<section class="cta-section">
+  <div class="container">
+    <div class="cta-inner">
+      <div class="cta-glow" aria-hidden="true"></div>
+      <p class="section-label" style="justify-content:center">Get started</p>
+      <h2 class="cta-title">Ready to build?</h2>
+      <p class="cta-sub">Start free. No credit card required. Full API access from day one.</p>
+      <div class="cta-actions">
+        <a href="#" class="btn-primary lg magnetic">Start building free</a>
+        <a href="pricing.html" class="btn-ghost">See pricing &rarr;</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── Footer ────────────────────────────────────────────────────────────── -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="footer-brand-name">Axiom</div>
+        <p class="footer-tagline">Intelligence at scale.</p>
+      </div>
+      <div class="footer-cols">
+        <div class="footer-col"><h4>Product</h4><a href="features.html">Features</a><a href="pricing.html">Pricing</a><a href="#">Changelog</a><a href="#">Roadmap</a></div>
+        <div class="footer-col"><h4>Resources</h4><a href="blog.html">Blog</a><a href="#">Documentation</a><a href="#">API Reference</a><a href="#">Status</a></div>
+        <div class="footer-col"><h4>Company</h4><a href="#">About</a><a href="#">Careers</a><a href="#">Contact</a></div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 Axiom AI, Inc. All rights reserved.</span>
+      <div class="footer-legal"><a href="#">Privacy</a><a href="#">Terms</a></div>
+    </div>
+  </div>
+</footer>
+
+<style>
+.feat-hero{position:relative;padding:10rem var(--px) var(--section-gap);overflow:hidden;text-align:center}
+.feat-hero-bg{position:absolute;inset:0;pointer-events:none}
+.feat-orb-1{position:absolute;width:700px;height:700px;border-radius:50%;background:radial-gradient(circle,oklch(62% 0.22 258/.2),transparent 65%);filter:blur(80px);top:-200px;left:50%;transform:translateX(-50%)}
+.feat-orb-2{position:absolute;width:400px;height:400px;border-radius:50%;background:radial-gradient(circle,oklch(74% 0.18 258/.12),transparent 65%);filter:blur(60px);bottom:0;right:10%}
+.feat-label{justify-content:center;margin-bottom:1.25rem}
+.feat-heading{font-size:var(--t-5xl);font-weight:800;letter-spacing:-.04em;line-height:1.06;text-wrap:balance;margin:0 auto 1.5rem;max-width:16ch;position:relative}
+.feat-hero .page-hero-sub{margin:0 auto 2.5rem;position:relative}
+.feat-hero-cta{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;position:relative}
+.feat-list{padding:var(--section-gap) 0}
+.feat-row{display:grid;grid-template-columns:1fr 1fr;gap:6rem;align-items:center;padding:5rem var(--px);max-width:calc(var(--max-w) + var(--px)*2);margin:0 auto;border-bottom:1px solid var(--border)}
+.feat-row:last-child{border-bottom:none}
+.feat-row.reverse .feat-copy{order:2}
+.feat-row.reverse .feat-visual{order:1}
+.feat-num{font-size:var(--t-xs);font-weight:800;letter-spacing:.1em;color:var(--text-3);margin-bottom:.5rem;font-variant-numeric:tabular-nums}
+.feat-title{font-size:var(--t-3xl);font-weight:800;letter-spacing:-.03em;line-height:1.12;margin-bottom:1rem;text-wrap:balance}
+.feat-desc{font-size:var(--t-base);color:var(--text-2);line-height:1.7;margin-bottom:1.5rem}
+.feat-bullets{list-style:none;display:flex;flex-direction:column;gap:.6rem}
+.feat-bullets li{display:flex;align-items:center;gap:.65rem;font-size:var(--t-sm);color:var(--text-2)}
+.feat-bullets li::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--accent-2);flex-shrink:0}
+.feat-card{background:var(--bg-2);border:1px solid var(--border-2);border-radius:var(--r-xl);overflow:hidden;box-shadow:0 20px 60px oklch(8% 0.012 258/.6)}
+.feat-card-header{display:flex;align-items:center;gap:.5rem;padding:.75rem 1.25rem;background:var(--bg-3);border-bottom:1px solid var(--border)}
+.feat-card-dot{width:10px;height:10px;border-radius:50%}
+.feat-card-dot.blue{background:#3b82f6}.feat-card-dot.yellow{background:#f59e0b}.feat-card-dot.green{background:#10b981}
+.feat-card-title{font-family:var(--mono);font-size:.72rem;color:var(--text-3);margin-left:.5rem}
+.nlp-demo{padding:1.25rem}
+.nlp-input{margin-bottom:1rem;padding:1rem;background:var(--bg-3);border-radius:var(--r);border:1px solid var(--border)}
+.nlp-prompt{font-size:var(--t-xs);font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--text-3);display:block;margin-bottom:.5rem}
+.nlp-text{font-size:var(--t-sm);color:var(--text-2);line-height:1.6}
+.nlp-output-grid{display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:1rem}
+.nlp-chip{padding:.3rem .75rem;border-radius:100px;font-size:var(--t-xs);font-weight:600;border:1px solid var(--border-2)}
+.nlp-chip.positive{border-color:oklch(72% 0.18 155/.5);color:oklch(72% 0.18 155);background:oklch(72% 0.18 155/.1)}
+.nlp-chip.finance{border-color:oklch(62% 0.22 258/.4);color:var(--accent-2);background:var(--accent-dim)}
+.nlp-chip.entity{border-color:var(--border-2);color:var(--text-2);background:var(--bg-3)}
+.nlp-confidence{display:flex;align-items:center;gap:.75rem}
+.conf-label{font-size:var(--t-xs);color:var(--text-3);white-space:nowrap}
+.conf-bar-wrap{flex:1;height:4px;background:var(--bg-3);border-radius:2px;overflow:hidden}
+.conf-bar{height:100%;width:var(--w);background:linear-gradient(90deg,var(--accent),var(--accent-2));border-radius:2px;transition:width 1.5s var(--ease-expo)}
+.conf-val{font-size:var(--t-xs);font-weight:700;color:var(--accent-2);white-space:nowrap}
+.agent-demo{padding:1.25rem;display:flex;flex-direction:column;gap:.75rem}
+.agent-step{display:flex;align-items:center;gap:.75rem;padding:.65rem 1rem;border-radius:var(--r);border:1px solid var(--border);background:var(--bg-3);font-size:var(--t-xs)}
+.agent-step.complete{border-color:oklch(72% 0.18 155/.3);background:oklch(72% 0.18 155/.06)}
+.agent-step.active{border-color:oklch(62% 0.22 258/.4);background:var(--accent-dim)}
+.agent-step.pending{opacity:.45}
+.ast-icon{width:18px;text-align:center;flex-shrink:0;font-size:.85rem}
+.ast-icon.spin{display:inline-block;animation:spin .8s linear infinite;color:var(--accent-2)}
+.agent-step.complete .ast-icon{color:oklch(72% 0.18 155)}
+.agent-step span:nth-child(2){flex:1;color:var(--text-2)}
+.ast-time{font-family:var(--mono);font-size:.7rem;color:var(--text-3);flex-shrink:0}
+@keyframes spin{to{transform:rotate(360deg)}}
+.analytics-demo{padding:1.25rem;display:flex;flex-direction:column;gap:.5rem}
+.analytics-row{display:flex;align-items:center;justify-content:space-between;padding:.5rem .75rem;border-radius:var(--r-sm);background:var(--bg-3);border:1px solid var(--border)}
+.analytics-label{font-size:var(--t-xs);color:var(--text-2)}
+.analytics-val{font-size:var(--t-sm);font-weight:700;font-variant-numeric:tabular-nums}
+.green-val{color:oklch(72% 0.18 155)}
+.ana-live{color:var(--accent-2)}
+.mini-sparkline{margin-top:.75rem;height:50px}
+.mini-sparkline svg{width:100%;height:100%}
+.feat-grid-section{padding:var(--section-gap) var(--px);max-width:calc(var(--max-w) + var(--px)*2);margin:0 auto}
+.feat-mini-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+.feat-mini-card{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--r-xl);padding:2rem;transition:border-color .3s,transform .35s var(--ease-quart)}
+.feat-mini-card:hover{border-color:var(--border-2);transform:translateY(-4px)}
+.feat-mini-icon{font-size:1.75rem;margin-bottom:1rem}
+.feat-mini-card h3{font-size:var(--t-lg);font-weight:700;letter-spacing:-.02em;margin-bottom:.5rem}
+.feat-mini-card p{font-size:var(--t-sm);color:var(--text-2);line-height:1.6}
+.cta-section{padding:var(--section-gap) var(--px)}
+.cta-inner{position:relative;text-align:center;padding:6rem 2rem;background:var(--bg-2);border:1px solid var(--border);border-radius:32px;overflow:hidden;max-width:var(--max-w);margin:0 auto}
+.cta-glow{position:absolute;top:50%;left:50%;transform:translate(-50%,-60%);width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,oklch(62% 0.22 258/.18),transparent 65%);filter:blur(40px);pointer-events:none}
+.cta-title{position:relative;font-size:var(--t-5xl);font-weight:800;letter-spacing:-.04em;line-height:1.05;margin-bottom:1rem;text-wrap:balance;background:linear-gradient(135deg,var(--text) 30%,var(--accent-2) 70%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.cta-sub{position:relative;font-size:var(--t-lg);color:var(--text-2);max-width:50ch;margin:0 auto 2.5rem;line-height:1.6}
+.cta-actions{position:relative;display:flex;align-items:center;justify-content:center;gap:1.25rem;flex-wrap:wrap}
+@media(max-width:900px){.feat-row{grid-template-columns:1fr;gap:3rem}.feat-row.reverse .feat-copy{order:0}.feat-row.reverse .feat-visual{order:1}.feat-mini-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:580px){.feat-mini-grid{grid-template-columns:1fr}}
+</style>
+
+<script type="module" src="/src/features.js"></script>
+</body>
+</html>

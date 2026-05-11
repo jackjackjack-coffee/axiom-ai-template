@@ -1,0 +1,448 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Axiom — AI Platform</title>
+  <meta name="description" content="Build, deploy, and scale AI workflows with unprecedented speed." />
+  <link rel="preconnect" href="https://api.fontshare.com" crossorigin />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%233b82f6'/><text x='50%' y='55%' dominant-baseline='middle' text-anchor='middle' fill='white' font-size='18' font-family='system-ui' font-weight='800'>A</text></svg>" />
+</head>
+<body>
+
+<!-- ─── Nav ──────────────────────────────────────────────────────────────── -->
+<header class="nav" id="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">Axiom</a>
+    <nav class="nav-links">
+      <a href="features.html">Features</a>
+      <a href="pricing.html">Pricing</a>
+      <a href="blog.html">Blog</a>
+      <a href="#">Docs</a>
+    </nav>
+    <div class="nav-actions">
+      <a href="#" class="nav-ghost">Sign in</a>
+      <a href="#" class="nav-cta magnetic">Get started</a>
+    </div>
+    <button class="nav-hamburger" aria-label="Open menu">
+      <span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<!-- ─── Hero ─────────────────────────────────────────────────────────────── -->
+<section class="hero-section">
+  <div class="hero-bg" aria-hidden="true">
+    <div class="orb-1"></div>
+    <div class="orb-2"></div>
+    <div class="hero-grid-overlay"></div>
+  </div>
+
+  <div class="hero-content">
+    <div class="hero-eyebrow">
+      <span class="badge accent">
+        <span class="badge-dot"></span>
+        Now in beta &mdash; Join 2,400+ teams
+      </span>
+    </div>
+
+    <h1 class="hero-title">
+      <span class="hero-line">Build AI workflows</span>
+      <span class="hero-line">at the speed</span>
+      <span class="hero-line glitch-target" data-text="of thought">of thought</span>
+    </h1>
+
+    <p class="hero-subtitle" aria-label="Deploy intelligent agents. Automate decisions. Ship faster than ever."></p>
+
+    <div class="hero-cta">
+      <a href="#" class="btn-primary lg magnetic">Start building free</a>
+      <a href="#" class="btn-outline lg magnetic">
+        Watch demo
+        <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
+          <circle cx="9" cy="9" r="8" stroke="currentColor" stroke-width="1.5"/>
+          <path d="M7.5 6L12 9L7.5 12V6Z" fill="currentColor"/>
+        </svg>
+      </a>
+    </div>
+
+    <div class="hero-metrics">
+      <div class="metric"><span class="metric-val">10M+</span><span class="metric-label">API calls daily</span></div>
+      <div class="metric-sep"></div>
+      <div class="metric"><span class="metric-val">99.9%</span><span class="metric-label">Uptime SLA</span></div>
+      <div class="metric-sep"></div>
+      <div class="metric"><span class="metric-val">150ms</span><span class="metric-label">Avg. response</span></div>
+      <div class="metric-sep"></div>
+      <div class="metric"><span class="metric-val">2,400+</span><span class="metric-label">Teams building</span></div>
+    </div>
+  </div>
+
+  <!-- Product mockup -->
+  <div class="mockup-container">
+    <div class="hero-mockup">
+      <div class="mockup-titlebar">
+        <div class="traffic-lights">
+          <span class="tl red"></span>
+          <span class="tl yellow"></span>
+          <span class="tl green"></span>
+        </div>
+        <span class="mockup-url">axiom.ai / dashboard</span>
+      </div>
+      <div class="mockup-body">
+        <aside class="mockup-sidebar">
+          <div class="sidebar-item active">Dashboard</div>
+          <div class="sidebar-item">Agents</div>
+          <div class="sidebar-item">Pipelines</div>
+          <div class="sidebar-item">Analytics</div>
+          <div class="sidebar-item">Settings</div>
+        </aside>
+        <main class="mockup-main">
+          <div class="mockup-chart-area">
+            <div class="chart-label">Requests / minute</div>
+            <div class="chart-bars">
+              <div class="bar" style="--h:42%"></div>
+              <div class="bar" style="--h:67%"></div>
+              <div class="bar" style="--h:53%"></div>
+              <div class="bar" style="--h:81%"></div>
+              <div class="bar" style="--h:60%"></div>
+              <div class="bar" style="--h:88%"></div>
+              <div class="bar" style="--h:72%"></div>
+              <div class="bar accent" style="--h:96%"></div>
+            </div>
+          </div>
+          <div class="mockup-stats-row">
+            <div class="mock-stat"><span class="mock-label">Active agents</span><span class="mock-val">24</span></div>
+            <div class="mock-stat"><span class="mock-label">Req / sec</span><span class="mock-val mock-live">1,284</span></div>
+            <div class="mock-stat"><span class="mock-label">Accuracy</span><span class="mock-val">98.4%</span></div>
+          </div>
+        </main>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── Marquee ───────────────────────────────────────────────────────────── -->
+<section class="trust-marquee-section">
+  <p class="trust-label">Trusted by teams at</p>
+  <div class="marquee-wrap">
+    <div class="marquee-track">
+      <span class="logo-word">Stripe</span><span class="logo-sep">&middot;</span>
+      <span class="logo-word">Notion</span><span class="logo-sep">&middot;</span>
+      <span class="logo-word">Linear</span><span class="logo-sep">&middot;</span>
+      <span class="logo-word">Vercel</span><span class="logo-sep">&middot;</span>
+      <span class="logo-word">Figma</span><span class="logo-sep">&middot;</span>
+      <span class="logo-word">Loom</span><span class="logo-sep">&middot;</span>
+      <span class="logo-word">Clerk</span><span class="logo-sep">&middot;</span>
+      <span class="logo-word">Resend</span><span class="logo-sep">&middot;</span>
+      <span class="logo-word">Raycast</span><span class="logo-sep">&middot;</span>
+      <span class="logo-word">Supabase</span><span class="logo-sep">&middot;</span>
+      <span class="logo-word">Stripe</span><span class="logo-sep">&middot;</span>
+      <span class="logo-word">Notion</span><span class="logo-sep">&middot;</span>
+      <span class="logo-word">Linear</span><span class="logo-sep">&middot;</span>
+      <span class="logo-word">Vercel</span><span class="logo-sep">&middot;</span>
+      <span class="logo-word">Figma</span><span class="logo-sep">&middot;</span>
+      <span class="logo-word">Loom</span><span class="logo-sep">&middot;</span>
+      <span class="logo-word">Clerk</span><span class="logo-sep">&middot;</span>
+      <span class="logo-word">Resend</span><span class="logo-sep">&middot;</span>
+      <span class="logo-word">Raycast</span><span class="logo-sep">&middot;</span>
+      <span class="logo-word">Supabase</span><span class="logo-sep">&middot;</span>
+    </div>
+  </div>
+</section>
+
+<!-- ─── Features bento ────────────────────────────────────────────────────── -->
+<section class="features-section">
+  <div class="container">
+    <div class="section-header">
+      <p class="section-label">Capabilities</p>
+      <h2 class="section-title">Everything you need<br>to build with AI</h2>
+      <p class="section-sub">Powerful primitives. Zero infrastructure headache.</p>
+    </div>
+    <div class="bento-grid">
+      <div class="bento-card bento-lg">
+        <div class="card-tag">Language</div>
+        <h3 class="card-title">Natural Language Processing</h3>
+        <p class="card-desc">Understand and generate human language with state-of-the-art accuracy across 95+ languages and dialects.</p>
+        <div class="nlp-visual" aria-hidden="true">
+          <span class="nlp-token">analyze</span>
+          <span class="nlp-token active">synthesize</span>
+          <span class="nlp-token">classify</span>
+          <span class="nlp-token">generate</span>
+          <span class="nlp-token">embed</span>
+        </div>
+        <a href="features.html" class="card-link">Explore NLP &rarr;</a>
+        <div class="card-glow"></div>
+      </div>
+
+      <div class="bento-card bento-sm">
+        <span class="stat-huge">99.9%</span>
+        <p class="stat-name">Uptime SLA</p>
+        <p class="stat-detail">Global redundancy across 12 regions. Zero planned downtime.</p>
+        <div class="card-glow"></div>
+      </div>
+
+      <div class="bento-card bento-sm accent-card">
+        <span class="stat-huge">150<small>ms</small></span>
+        <p class="stat-name">Avg. latency</p>
+        <p class="stat-detail">Sub-200ms inference on any model at any scale.</p>
+        <div class="card-glow accent-glow"></div>
+      </div>
+
+      <div class="bento-card bento-lg">
+        <div class="card-tag">Automation</div>
+        <h3 class="card-title">Autonomous Agents</h3>
+        <p class="card-desc">Deploy agents that reason, plan, and take actions across your entire stack &mdash; no babysitting required.</p>
+        <div class="agent-visual" aria-hidden="true">
+          <div class="agent-node">Input</div>
+          <div class="agent-arrow">&rarr;</div>
+          <div class="agent-node active">Reason</div>
+          <div class="agent-arrow">&rarr;</div>
+          <div class="agent-node">Act</div>
+          <div class="agent-arrow">&rarr;</div>
+          <div class="agent-node">Learn</div>
+        </div>
+        <a href="features.html" class="card-link">Explore agents &rarr;</a>
+        <div class="card-glow"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── How it works ──────────────────────────────────────────────────────── -->
+<section class="how-section">
+  <div class="container">
+    <div class="how-layout">
+      <div class="how-left">
+        <p class="section-label">Process</p>
+        <h2 class="section-title how-title">Ship AI in<br>three steps</h2>
+        <p class="section-sub how-sub">From idea to production-grade AI in minutes.</p>
+        <a href="#" class="btn-primary magnetic" style="margin-top: 2.5rem; display: inline-flex;">Start now &rarr;</a>
+      </div>
+      <div class="how-right">
+        <div class="step">
+          <div class="step-num">01</div>
+          <h3 class="step-title">Connect your data</h3>
+          <p class="step-desc">Plug in any data source &mdash; databases, APIs, files, or real-time streams. Axiom ingests and indexes it automatically.</p>
+          <div class="code-block">
+<span class="code-kw">axiom</span>.connect({
+  source: <span class="code-str">"postgresql"</span>,
+  url:    process.env.<span class="code-kw">DB_URL</span>,
+  sync:   <span class="code-str">"realtime"</span>
+})</div>
+        </div>
+        <div class="step">
+          <div class="step-num">02</div>
+          <h3 class="step-title">Configure your agent</h3>
+          <p class="step-desc">Define goals, constraints, and tools in plain language. Your agent learns from context and adapts automatically.</p>
+          <div class="code-block">
+<span class="code-kw">axiom</span>.agent({
+  goal:    <span class="code-str">"Answer customer queries"</span>,
+  tools:   [<span class="code-str">"search"</span>, <span class="code-str">"email"</span>, <span class="code-str">"crm"</span>],
+  memory:  <span class="code-kw">true</span>,
+  maxIter: <span class="code-dim">12</span>
+})</div>
+        </div>
+        <div class="step">
+          <div class="step-num">03</div>
+          <h3 class="step-title">Deploy and scale</h3>
+          <p class="step-desc">Push to production with a single command. Axiom auto-scales to handle any traffic, anywhere in the world.</p>
+          <div class="code-block">
+$ axiom deploy <span class="code-kw">--env</span> production
+
+<span class="code-ok">&#x2713;</span> Agent live at <span class="code-str">api.axiom.ai/v1</span>
+<span class="code-ok">&#x2713;</span> Scaled across <span class="code-dim">3</span> regions
+<span class="code-ok">&#x2713;</span> Monitoring active</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── Testimonials ──────────────────────────────────────────────────────── -->
+<section class="testi-section">
+  <div class="container">
+    <div class="section-header center">
+      <p class="section-label">Social proof</p>
+      <h2 class="section-title testi-heading">Loved by builders</h2>
+    </div>
+  </div>
+  <div class="testi-marquee-wrap">
+    <div class="marquee-wrap">
+      <div class="marquee-track">
+        <div class="testi-card"><p>"Axiom cut our AI development time by 70%. What used to take months now takes hours."</p><div class="testi-author"><div class="testi-avatar" style="background:#3b82f6"></div><div><strong>Sarah Chen</strong><span>CTO, Meridian</span></div></div></div>
+        <div class="testi-card"><p>"The most developer-friendly AI platform we've used. The agent primitives are incredibly powerful."</p><div class="testi-author"><div class="testi-avatar" style="background:#8b5cf6"></div><div><strong>Marcus Ito</strong><span>Lead Eng, Flowbase</span></div></div></div>
+        <div class="testi-card"><p>"We went from zero to production AI in three days. The API design is phenomenal."</p><div class="testi-author"><div class="testi-avatar" style="background:#06b6d4"></div><div><strong>Priya Nair</strong><span>Head of ML, Solara</span></div></div></div>
+        <div class="testi-card"><p>"Finally an AI platform that doesn't require a PhD to configure. Our whole team loves it."</p><div class="testi-author"><div class="testi-avatar" style="background:#10b981"></div><div><strong>Tom Alvarez</strong><span>Founder, Cartridge</span></div></div></div>
+        <div class="testi-card"><p>"Sub-150ms responses at 10k req/min. The performance headroom is incredible."</p><div class="testi-author"><div class="testi-avatar" style="background:#f59e0b"></div><div><strong>Lena Wu</strong><span>Platform Eng, Volta</span></div></div></div>
+        <!-- duplicate for loop -->
+        <div class="testi-card"><p>"Axiom cut our AI development time by 70%. What used to take months now takes hours."</p><div class="testi-author"><div class="testi-avatar" style="background:#3b82f6"></div><div><strong>Sarah Chen</strong><span>CTO, Meridian</span></div></div></div>
+        <div class="testi-card"><p>"The most developer-friendly AI platform we've used. The agent primitives are incredibly powerful."</p><div class="testi-author"><div class="testi-avatar" style="background:#8b5cf6"></div><div><strong>Marcus Ito</strong><span>Lead Eng, Flowbase</span></div></div></div>
+        <div class="testi-card"><p>"We went from zero to production AI in three days. The API design is phenomenal."</p><div class="testi-author"><div class="testi-avatar" style="background:#06b6d4"></div><div><strong>Priya Nair</strong><span>Head of ML, Solara</span></div></div></div>
+        <div class="testi-card"><p>"Finally an AI platform that doesn't require a PhD to configure. Our whole team loves it."</p><div class="testi-author"><div class="testi-avatar" style="background:#10b981"></div><div><strong>Tom Alvarez</strong><span>Founder, Cartridge</span></div></div></div>
+        <div class="testi-card"><p>"Sub-150ms responses at 10k req/min. The performance headroom is incredible."</p><div class="testi-author"><div class="testi-avatar" style="background:#f59e0b"></div><div><strong>Lena Wu</strong><span>Platform Eng, Volta</span></div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── CTA ───────────────────────────────────────────────────────────────── -->
+<section class="cta-section">
+  <div class="container">
+    <div class="cta-inner">
+      <div class="cta-glow" aria-hidden="true"></div>
+      <p class="section-label" style="justify-content:center">Get started</p>
+      <h2 class="cta-title">Ready to ship smarter?</h2>
+      <p class="cta-sub">Join 2,400+ teams building the future with Axiom.<br>Start free. Scale when you&rsquo;re ready.</p>
+      <div class="cta-actions">
+        <a href="#" class="btn-primary lg magnetic">Get started free</a>
+        <a href="#" class="btn-ghost">Talk to sales &rarr;</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── Footer ────────────────────────────────────────────────────────────── -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="footer-brand-name">Axiom</div>
+        <p class="footer-tagline">Intelligence at scale.</p>
+      </div>
+      <div class="footer-cols">
+        <div class="footer-col">
+          <h4>Product</h4>
+          <a href="features.html">Features</a>
+          <a href="pricing.html">Pricing</a>
+          <a href="#">Changelog</a>
+          <a href="#">Roadmap</a>
+        </div>
+        <div class="footer-col">
+          <h4>Resources</h4>
+          <a href="blog.html">Blog</a>
+          <a href="#">Documentation</a>
+          <a href="#">API Reference</a>
+          <a href="#">Status</a>
+        </div>
+        <div class="footer-col">
+          <h4>Company</h4>
+          <a href="#">About</a>
+          <a href="#">Careers</a>
+          <a href="#">Contact</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 Axiom AI, Inc. All rights reserved.</span>
+      <div class="footer-legal">
+        <a href="#">Privacy</a>
+        <a href="#">Terms</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<style>
+.hero-section{position:relative;min-height:100svh;display:flex;flex-direction:column;align-items:center;padding:9rem var(--px) 0;overflow:hidden;text-align:center}
+.hero-bg{position:absolute;inset:0;pointer-events:none;z-index:0}
+.orb-1{position:absolute;width:900px;height:900px;border-radius:50%;background:radial-gradient(circle at center,oklch(62% 0.22 258/.28),transparent 65%);filter:blur(60px);top:-250px;left:50%;transform:translateX(-50%);animation:orb-breathe 9s ease-in-out infinite alternate}
+.orb-2{position:absolute;width:550px;height:550px;border-radius:50%;background:radial-gradient(circle at center,oklch(74% 0.18 258/.15),transparent 65%);filter:blur(80px);bottom:5%;right:-8%;animation:orb-breathe 12s ease-in-out infinite alternate-reverse}
+@keyframes orb-breathe{from{transform:scale(1);opacity:.8}to{transform:scale(1.12);opacity:1}}
+.hero-grid-overlay{position:absolute;inset:0;background-image:linear-gradient(oklch(62% 0.22 258/.04) 1px,transparent 1px),linear-gradient(90deg,oklch(62% 0.22 258/.04) 1px,transparent 1px);background-size:56px 56px;mask:radial-gradient(ellipse 80% 60% at 50% 0%,transparent 30%,black 80%);-webkit-mask:radial-gradient(ellipse 80% 60% at 50% 0%,transparent 30%,black 80%)}
+.hero-content{position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;max-width:920px;width:100%}
+.hero-eyebrow{margin-bottom:2rem}
+.hero-title{font-size:var(--t-6xl);font-weight:800;letter-spacing:-.04em;line-height:1.04;margin-bottom:2rem;text-wrap:balance}
+.hero-line{display:block}
+.glitch-target{background:linear-gradient(120deg,var(--text) 0%,var(--accent-2) 45%,var(--text) 75%);background-size:200% auto;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;animation:text-shimmer 5s linear infinite}
+@keyframes text-shimmer{to{background-position:200% center}}
+.hero-subtitle{font-size:var(--t-xl);color:var(--text-2);min-height:1.6em;margin-bottom:2.5rem;max-width:55ch;line-height:1.6}
+.hero-cta{display:flex;gap:1rem;flex-wrap:wrap;justify-content:center;margin-bottom:3.5rem}
+.hero-metrics{display:flex;align-items:center;flex-wrap:wrap;justify-content:center;padding:1.25rem 2rem;background:oklch(11% 0.012 258/.7);border:1px solid var(--border);border-radius:var(--r-xl);backdrop-filter:blur(12px);margin-bottom:4rem}
+.metric{display:flex;flex-direction:column;align-items:center;padding:.25rem 1.75rem}
+.metric-val{font-size:var(--t-xl);font-weight:800;letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+.metric-label{font-size:var(--t-xs);color:var(--text-3);white-space:nowrap}
+.metric-sep{width:1px;height:32px;background:var(--border);flex-shrink:0}
+.mockup-container{position:relative;z-index:1;width:100%;max-width:900px;padding:0 var(--px)}
+.hero-mockup{background:var(--bg-2);border:1px solid var(--border-2);border-radius:var(--r-xl);overflow:hidden;box-shadow:0 0 0 1px oklch(62% 0.22 258/.1),0 40px 100px oklch(62% 0.22 258/.12),0 80px 200px oklch(8% 0.012 258/.8)}
+.mockup-titlebar{display:flex;align-items:center;gap:1rem;padding:.75rem 1.25rem;background:var(--bg-3);border-bottom:1px solid var(--border)}
+.traffic-lights{display:flex;gap:6px}
+.tl{width:10px;height:10px;border-radius:50%}
+.tl.red{background:#ff5f57}.tl.yellow{background:#ffbd2e}.tl.green{background:#28c940}
+.mockup-url{font-family:var(--mono);font-size:.72rem;color:var(--text-3)}
+.mockup-body{display:flex;height:280px}
+.mockup-sidebar{width:140px;flex-shrink:0;border-right:1px solid var(--border);padding:1rem .75rem;display:flex;flex-direction:column;gap:.25rem}
+.sidebar-item{padding:.45rem .75rem;border-radius:var(--r-sm);font-size:var(--t-xs);font-weight:500;color:var(--text-3);cursor:pointer;transition:background .2s,color .2s}
+.sidebar-item.active{background:var(--accent-dim);color:var(--accent-2)}
+.sidebar-item:hover:not(.active){background:var(--bg-3);color:var(--text-2)}
+.mockup-main{flex:1;padding:1.25rem;display:flex;flex-direction:column;gap:1rem;overflow:hidden}
+.mockup-chart-area{flex:1}
+.chart-label{font-size:.65rem;color:var(--text-3);margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.06em}
+.chart-bars{display:flex;align-items:flex-end;gap:6px;height:110px}
+.bar{flex:1;height:var(--h);background:oklch(62% 0.22 258/.25);border-radius:3px 3px 0 0;transition:height 1s var(--ease-expo)}
+.bar.accent{background:var(--accent)}
+.mockup-stats-row{display:flex;gap:1rem}
+.mock-stat{flex:1;background:var(--bg-3);border:1px solid var(--border);border-radius:var(--r-sm);padding:.6rem .75rem}
+.mock-label{display:block;font-size:.65rem;color:var(--text-3);text-transform:uppercase;letter-spacing:.05em;margin-bottom:.2rem}
+.mock-val{font-size:var(--t-lg);font-weight:700;font-variant-numeric:tabular-nums}
+.mock-live{color:var(--accent-2)}
+.trust-marquee-section{padding:3rem 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.trust-label{text-align:center;font-size:var(--t-xs);text-transform:uppercase;letter-spacing:.1em;color:var(--text-3);margin-bottom:1.5rem}
+.logo-word{padding:0 1.5rem;font-size:var(--t-xl);font-weight:700;color:var(--text-3);white-space:nowrap;letter-spacing:-.02em;transition:color .3s}
+.logo-word:hover{color:var(--text-2)}
+.logo-sep{color:var(--border-2);font-size:var(--t-lg);flex-shrink:0}
+.features-section{padding:var(--section-gap) var(--px);max-width:calc(var(--max-w) + var(--px)*2);margin:0 auto}
+.bento-grid{display:grid;grid-template-columns:2fr 1fr;gap:1rem}
+.bento-card{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--r-xl);padding:2.25rem;position:relative;overflow:hidden;transition:border-color .3s,transform .4s var(--ease-quart)}
+.bento-card:hover{border-color:var(--border-2);transform:translateY(-3px)}
+.bento-card::before{content:'';position:absolute;inset:0;background:radial-gradient(300px circle at var(--mouse-x,50%) var(--mouse-y,50%),oklch(62% 0.22 258/.06),transparent 70%);opacity:0;transition:opacity .4s}
+.bento-card:hover::before{opacity:1}
+.card-tag{display:inline-block;font-size:var(--t-xs);font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--accent-2);margin-bottom:.75rem}
+.card-title{font-size:var(--t-2xl);font-weight:700;letter-spacing:-.02em;margin-bottom:.75rem;line-height:1.2}
+.card-desc{font-size:var(--t-sm);color:var(--text-2);line-height:1.65;max-width:44ch;margin-bottom:1.5rem}
+.card-link{font-size:var(--t-sm);font-weight:600;color:var(--accent-2);transition:color .2s}
+.card-link:hover{color:var(--text)}
+.card-glow{position:absolute;bottom:-40px;right:-40px;width:200px;height:200px;border-radius:50%;background:radial-gradient(circle,oklch(62% 0.22 258/.12),transparent 70%);pointer-events:none}
+.accent-glow{background:radial-gradient(circle,oklch(62% 0.22 258/.25),transparent 70%)}
+.nlp-visual{display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:1.5rem}
+.nlp-token{padding:.3rem .75rem;border-radius:100px;font-size:var(--t-xs);font-weight:600;border:1px solid var(--border-2);color:var(--text-3);background:var(--bg-2);transition:all .3s}
+.nlp-token.active{border-color:oklch(62% 0.22 258/.5);color:var(--accent-2);background:var(--accent-dim);box-shadow:0 0 12px oklch(62% 0.22 258/.2)}
+.agent-visual{display:flex;align-items:center;gap:.5rem;margin-bottom:1.5rem;flex-wrap:wrap}
+.agent-node{padding:.35rem .85rem;border-radius:var(--r-sm);font-size:var(--t-xs);font-weight:600;border:1px solid var(--border-2);color:var(--text-3);background:var(--bg-2)}
+.agent-node.active{border-color:oklch(62% 0.22 258/.5);color:var(--accent-2);background:var(--accent-dim)}
+.agent-arrow{color:var(--text-3);font-size:var(--t-sm)}
+.stat-huge{display:block;font-size:clamp(3rem,6vw,4.5rem);font-weight:800;letter-spacing:-.04em;line-height:1;margin-bottom:.5rem;font-variant-numeric:tabular-nums}
+.stat-huge small{font-size:.45em;font-weight:700}
+.stat-name{font-size:var(--t-base);font-weight:600;margin-bottom:.5rem}
+.stat-detail{font-size:var(--t-xs);color:var(--text-2);line-height:1.5}
+.accent-card{background:var(--accent-dim);border-color:oklch(62% 0.22 258/.3)}
+.accent-card .stat-huge{color:var(--accent-2)}
+.how-section{padding:var(--section-gap) var(--px);max-width:calc(var(--max-w) + var(--px)*2);margin:0 auto}
+.how-layout{display:grid;grid-template-columns:1fr 1.4fr;gap:6rem;align-items:start}
+.how-left{position:sticky;top:6rem}
+.how-right{display:flex;flex-direction:column;gap:3.5rem}
+.step{padding:2rem;background:var(--bg-card);border:1px solid var(--border);border-radius:var(--r-xl);transition:border-color .3s}
+.step:hover{border-color:var(--border-2)}
+.step-num{font-size:var(--t-xs);font-weight:800;letter-spacing:.08em;color:var(--accent-2);margin-bottom:.75rem;font-variant-numeric:tabular-nums}
+.step-title{font-size:var(--t-xl);font-weight:700;letter-spacing:-.02em;margin-bottom:.6rem}
+.step-desc{font-size:var(--t-sm);color:var(--text-2);line-height:1.65;margin-bottom:1.25rem}
+.testi-section{padding:var(--section-gap) 0}
+.testi-marquee-wrap{margin-top:3rem}
+.testi-card{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--r-xl);padding:1.75rem;width:320px;flex-shrink:0;margin:0 .5rem;transition:border-color .3s}
+.testi-card:hover{border-color:var(--border-2)}
+.testi-card p{font-size:var(--t-sm);color:var(--text-2);line-height:1.65;margin-bottom:1.25rem}
+.testi-author{display:flex;align-items:center;gap:.75rem}
+.testi-avatar{width:32px;height:32px;border-radius:50%;flex-shrink:0;opacity:.85}
+.testi-author strong{display:block;font-size:var(--t-sm);font-weight:600}
+.testi-author span{font-size:var(--t-xs);color:var(--text-3)}
+.cta-section{padding:var(--section-gap) var(--px)}
+.cta-inner{position:relative;text-align:center;padding:6rem 2rem;background:var(--bg-2);border:1px solid var(--border);border-radius:32px;overflow:hidden;max-width:var(--max-w);margin:0 auto}
+.cta-glow{position:absolute;top:50%;left:50%;transform:translate(-50%,-60%);width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,oklch(62% 0.22 258/.18),transparent 65%);filter:blur(40px);pointer-events:none}
+.cta-title{position:relative;font-size:var(--t-5xl);font-weight:800;letter-spacing:-.04em;line-height:1.05;margin-bottom:1rem;text-wrap:balance;background:linear-gradient(135deg,var(--text) 30%,var(--accent-2) 70%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.cta-sub{position:relative;font-size:var(--t-lg);color:var(--text-2);max-width:50ch;margin:0 auto 2.5rem;line-height:1.6}
+.cta-actions{position:relative;display:flex;align-items:center;justify-content:center;gap:1.25rem;flex-wrap:wrap}
+@media(max-width:900px){.bento-grid{grid-template-columns:1fr 1fr}.how-layout{grid-template-columns:1fr}.how-left{position:static}.hero-title{font-size:var(--t-5xl)}}
+@media(max-width:640px){.bento-grid{grid-template-columns:1fr}.metric-sep{display:none}.metric{padding:.5rem 1rem}.mockup-sidebar{display:none}.testi-card{width:280px}}
+</style>
+
+<script type="module" src="/src/home.js"></script>
+</body>
+</html>

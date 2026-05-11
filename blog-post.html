@@ -1,0 +1,289 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>How we built sub-150ms inference — Axiom Blog</title>
+  <meta name="description" content="A deep dive into the architectural decisions that let us deliver consistently fast AI inference at massive scale." />
+  <link rel="preconnect" href="https://api.fontshare.com" crossorigin />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%233b82f6'/><text x='50%' y='55%' dominant-baseline='middle' text-anchor='middle' fill='white' font-size='18' font-family='system-ui' font-weight='800'>A</text></svg>" />
+</head>
+<body>
+
+<!-- Progress bar -->
+<div class="progress-bar" id="progress" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+
+<header class="nav" id="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">Axiom</a>
+    <nav class="nav-links">
+      <a href="features.html">Features</a>
+      <a href="pricing.html">Pricing</a>
+      <a href="blog.html" class="active">Blog</a>
+      <a href="#">Docs</a>
+    </nav>
+    <div class="nav-actions">
+      <a href="#" class="nav-ghost">Sign in</a>
+      <a href="#" class="nav-cta magnetic">Get started</a>
+    </div>
+    <button class="nav-hamburger" aria-label="Open menu"><span></span><span></span></button>
+  </div>
+</header>
+
+<!-- ─── Article header ────────────────────────────────────────────────────── -->
+<article class="article">
+  <header class="article-header">
+    <div class="container">
+      <div class="article-back">
+        <a href="blog.html" class="back-link">&larr; Back to blog</a>
+      </div>
+      <div class="article-meta-top">
+        <span class="post-tag">Engineering</span>
+        <span class="post-date">May 8, 2026</span>
+        <span class="post-read">8 min read</span>
+      </div>
+      <h1 class="article-title">How we built sub-150ms inference<br>at 10M requests per day</h1>
+      <p class="article-lead">A deep dive into the architectural decisions, caching strategies, and hardware optimizations that let us deliver consistently fast AI inference at massive scale — without breaking the bank.</p>
+      <div class="article-author-row">
+        <div class="article-author">
+          <div class="author-avatar lg" style="background: linear-gradient(135deg, #3b82f6, #8b5cf6)"></div>
+          <div>
+            <strong>James Park</strong>
+            <span>Staff Infrastructure Engineer</span>
+          </div>
+        </div>
+        <div class="article-share">
+          <button class="share-btn" aria-label="Copy link">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M6 4L10 8L6 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path d="M2 8H10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+            Share
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Hero image -->
+    <div class="article-hero-img">
+      <img src="https://picsum.photos/seed/axiom-inference/1400/700" alt="Server infrastructure" loading="eager" />
+      <div class="article-hero-overlay"></div>
+    </div>
+  </header>
+
+  <!-- ─── Article body + sidebar ──────────────────────────────────────────── -->
+  <div class="article-layout container">
+
+    <!-- Table of contents (sticky) -->
+    <aside class="article-toc" id="toc">
+      <p class="toc-title">On this page</p>
+      <nav>
+        <a href="#background" class="toc-link active">Background</a>
+        <a href="#bottlenecks" class="toc-link">Finding bottlenecks</a>
+        <a href="#kv-cache" class="toc-link">KV cache strategy</a>
+        <a href="#batching" class="toc-link">Dynamic batching</a>
+        <a href="#hardware" class="toc-link">Hardware selection</a>
+        <a href="#results" class="toc-link">Results</a>
+        <a href="#whats-next" class="toc-link">What&rsquo;s next</a>
+      </nav>
+    </aside>
+
+    <!-- Main content -->
+    <div class="article-content">
+
+      <section id="background">
+        <h2>Background</h2>
+        <p>When we launched Axiom in 2024, our p50 inference latency sat around 380ms. For demos, that was fine. For production workloads — real-time customer chat, document processing pipelines, agent loops that chain dozens of calls — it wasn't. Our users were polite about it, but the churn data told the real story.</p>
+        <p>We set an aggressive internal target: <strong>sub-150ms p50, sub-400ms p99</strong>, at 10M requests per day without scaling costs proportionally. This post is the story of how we got there.</p>
+      </section>
+
+      <section id="bottlenecks">
+        <h2>Finding the bottlenecks</h2>
+        <p>Our first step was brutal honesty about where time was actually going. We instrumented every layer — network ingress, tokenization, queue time, model forward pass, detokenization, response serialization — and built a flame graph across 10,000 sampled requests.</p>
+        <p>The results were humbling. Model forward pass was only 40% of wall-clock time. The other 60% was split between:</p>
+        <ul>
+          <li><strong>Queue wait time</strong> (23%) — requests sitting idle waiting for a GPU slot</li>
+          <li><strong>KV cache misses</strong> (18%) — recomputing attention for repeated prefixes</li>
+          <li><strong>Network overhead</strong> (12%) — request routing through too many hops</li>
+          <li><strong>Tokenization</strong> (7%) — surprising, but CPU-bound tokenization was a real bottleneck at scale</li>
+        </ul>
+        <p>This told us exactly where to focus. Optimizing the model itself would yield at best a 40% improvement. Fixing the infrastructure would give us 2&times; or more.</p>
+      </section>
+
+      <div class="article-callout">
+        <div class="callout-icon">&#x26A1;</div>
+        <div>
+          <strong>Key insight</strong>
+          <p>Model forward pass is often not the bottleneck in production AI systems. Profile your full request path before optimizing the model.</p>
+        </div>
+      </div>
+
+      <section id="kv-cache">
+        <h2>KV cache strategy</h2>
+        <p>The single highest-leverage optimization was prefix caching. Many production workloads share long system prompts — a customer service agent might have 2,000 tokens of context that's identical across every request. Recomputing attention over those 2,000 tokens on every call is pure waste.</p>
+        <p>We built a distributed KV cache using a content-addressed key scheme: SHA-256 of the normalized token sequence maps to a GPU-memory-resident attention cache entry. Eviction is LRU with a frequency-weighted scoring function that keeps hot prefixes resident even under memory pressure.</p>
+        <div class="code-block">
+<span class="code-kw">class</span> PrefixCache:
+  <span class="code-kw">def</span> get_or_compute(self, tokens: list[int]) -> KVState:
+    key = sha256(normalize(tokens))
+    <span class="code-kw">if</span> cached := self.store.get(key):
+      self.stats.record_hit(len(tokens))
+      <span class="code-kw">return</span> cached
+    state = self.model.compute_kv(tokens)
+    self.store.set(key, state, ttl=<span class="code-dim">3600</span>)
+    <span class="code-kw">return</span> state</div>
+        <p>Cache hit rate reached 73% within the first week on production traffic. For requests with long shared prefixes, this alone cut latency by 45%.</p>
+      </section>
+
+      <section id="batching">
+        <h2>Dynamic batching</h2>
+        <p>Static batching — wait for N requests, then process together — is simple but brutal for tail latency. If you're waiting for a batch of 8 and only 3 requests arrive in 50ms, either you wait (hurting latency) or you process early (wasting GPU utilization).</p>
+        <p>We implemented a dynamic batching controller that adjusts batch size and wait time based on current queue depth and per-request priority. The algorithm is a modified version of Orca's iteration-level scheduling, extended with priority lanes for Pro and Enterprise customers.</p>
+        <p>This reduced p99 latency by 38% while actually increasing GPU utilization from 61% to 84%.</p>
+      </section>
+
+      <section id="hardware">
+        <h2>Hardware selection</h2>
+        <p>We benchmarked H100 SXM, H100 PCIe, A100 80GB, and L40S across our workload mix. The answer wasn't obvious — H100 SXM wins on raw throughput, but our workload mix includes many short requests where NVLink bandwidth doesn't help and the price premium doesn't justify itself.</p>
+        <p>We landed on a heterogeneous fleet: H100 SXM clusters for long-context and fine-tuned model inference, L40S clusters for standard inference where the price-per-token is 40% better. Traffic is routed to the appropriate cluster based on request characteristics detected at ingress.</p>
+      </section>
+
+      <section id="results">
+        <h2>Results</h2>
+        <p>After six months of incremental improvements, here's where we landed:</p>
+        <div class="results-table">
+          <table>
+            <thead><tr><th>Metric</th><th>Before</th><th>After</th><th>Improvement</th></tr></thead>
+            <tbody>
+              <tr><td>p50 latency</td><td>380ms</td><td>87ms</td><td class="green-val">&#x2212;77%</td></tr>
+              <tr><td>p95 latency</td><td>820ms</td><td>142ms</td><td class="green-val">&#x2212;83%</td></tr>
+              <tr><td>p99 latency</td><td>1,840ms</td><td>310ms</td><td class="green-val">&#x2212;83%</td></tr>
+              <tr><td>GPU utilization</td><td>61%</td><td>84%</td><td class="green-val">+38%</td></tr>
+              <tr><td>Cost per 1M tokens</td><td>$4.20</td><td>$1.85</td><td class="green-val">&#x2212;56%</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section id="whats-next">
+        <h2>What&rsquo;s next</h2>
+        <p>We're not done. The next phase focuses on speculative decoding — using a small draft model to predict likely token sequences, then verifying in parallel with the full model. Early experiments suggest another 40–60% latency reduction for standard-length outputs.</p>
+        <p>We're also exploring disaggregated prefill/decode — splitting the compute-heavy prefill phase from the memory-bandwidth-bound decode phase onto different hardware. This is bleeding edge territory, but the potential gains are significant.</p>
+        <p>If this kind of work interests you, <a href="#" class="inline-link">we're hiring</a>.</p>
+      </section>
+
+    </div>
+  </div>
+
+  <!-- ─── Related posts ──────────────────────────────────────────────────── -->
+  <section class="related-section">
+    <div class="container">
+      <h2 class="related-title">Related posts</h2>
+      <div class="related-grid">
+        <a href="blog-post.html" class="related-card">
+          <div class="related-img"><img src="https://picsum.photos/seed/axiom-speculative/600/400" alt="" loading="lazy" /></div>
+          <div class="related-body">
+            <span class="post-tag">Research</span>
+            <h3>Speculative decoding at scale: our approach</h3>
+            <span class="post-read">12 min</span>
+          </div>
+        </a>
+        <a href="blog-post.html" class="related-card">
+          <div class="related-img"><img src="https://picsum.photos/seed/axiom-lb/600/400" alt="" loading="lazy" /></div>
+          <div class="related-body">
+            <span class="post-tag">Engineering</span>
+            <h3>Building a global load balancer for AI workloads</h3>
+            <span class="post-read">9 min</span>
+          </div>
+        </a>
+        <a href="blog-post.html" class="related-card">
+          <div class="related-img"><img src="https://picsum.photos/seed/axiom-vec/600/400" alt="" loading="lazy" /></div>
+          <div class="related-body">
+            <span class="post-tag">Engineering</span>
+            <h3>Why we built our own vector database</h3>
+            <span class="post-read">7 min</span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+</article>
+
+<!-- ─── Footer ────────────────────────────────────────────────────────────── -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand"><div class="footer-brand-name">Axiom</div><p class="footer-tagline">Intelligence at scale.</p></div>
+      <div class="footer-cols">
+        <div class="footer-col"><h4>Product</h4><a href="features.html">Features</a><a href="pricing.html">Pricing</a><a href="#">Changelog</a><a href="#">Roadmap</a></div>
+        <div class="footer-col"><h4>Resources</h4><a href="blog.html">Blog</a><a href="#">Documentation</a><a href="#">API Reference</a><a href="#">Status</a></div>
+        <div class="footer-col"><h4>Company</h4><a href="#">About</a><a href="#">Careers</a><a href="#">Contact</a></div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 Axiom AI, Inc. All rights reserved.</span>
+      <div class="footer-legal"><a href="#">Privacy</a><a href="#">Terms</a></div>
+    </div>
+  </div>
+</footer>
+
+<style>
+.article-header{padding:8rem var(--px) 0;max-width:calc(var(--max-w) + var(--px)*2);margin:0 auto}
+.article-back{margin-bottom:2rem}
+.back-link{font-size:var(--t-sm);color:var(--text-3);transition:color .2s}
+.back-link:hover{color:var(--text-2)}
+.article-meta-top{display:flex;align-items:center;gap:1rem;margin-bottom:1.5rem;flex-wrap:wrap}
+.article-title{font-size:var(--t-5xl);font-weight:800;letter-spacing:-.04em;line-height:1.06;margin-bottom:1.5rem;text-wrap:balance;max-width:22ch}
+.article-lead{font-size:var(--t-xl);color:var(--text-2);line-height:1.6;max-width:65ch;margin-bottom:2rem}
+.article-author-row{display:flex;align-items:center;justify-content:space-between;padding:1.5rem 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border);margin-bottom:3rem;flex-wrap:wrap;gap:1rem}
+.article-author{display:flex;align-items:center;gap:1rem}
+.author-avatar.lg{width:44px;height:44px;border-radius:50%;flex-shrink:0}
+.article-author strong{display:block;font-size:var(--t-base);font-weight:700}
+.article-author span{font-size:var(--t-sm);color:var(--text-3)}
+.share-btn{display:flex;align-items:center;gap:.5rem;padding:.5rem 1rem;border:1px solid var(--border-2);border-radius:var(--r-sm);font-size:var(--t-sm);color:var(--text-2);background:var(--bg-2);cursor:pointer;transition:border-color .2s,color .2s}
+.share-btn:hover{border-color:var(--accent);color:var(--text)}
+.article-hero-img{position:relative;height:480px;overflow:hidden;margin-top:0}
+.article-hero-img img{width:100%;height:100%;object-fit:cover}
+.article-hero-overlay{position:absolute;inset:0;background:linear-gradient(to bottom,transparent 50%,var(--bg) 100%)}
+.article-layout{display:grid;grid-template-columns:200px 1fr;gap:5rem;align-items:start;padding-top:4rem;padding-bottom:var(--section-gap)}
+.article-toc{position:sticky;top:6rem}
+.toc-title{font-size:var(--t-xs);font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--text-3);margin-bottom:1rem}
+.toc-link{display:block;font-size:var(--t-sm);color:var(--text-3);padding:.35rem 0;border-left:2px solid var(--border);padding-left:.75rem;transition:color .2s,border-color .2s}
+.toc-link:hover{color:var(--text-2);border-color:var(--border-2)}
+.toc-link.active{color:var(--accent-2);border-color:var(--accent)}
+.article-content{max-width:72ch}
+.article-content h2{font-size:var(--t-2xl);font-weight:800;letter-spacing:-.03em;margin:3rem 0 1rem}
+.article-content h2:first-child{margin-top:0}
+.article-content p{font-size:var(--t-base);color:var(--text-2);line-height:1.8;margin-bottom:1.25rem}
+.article-content ul{margin:1rem 0 1.5rem 1.25rem;display:flex;flex-direction:column;gap:.5rem}
+.article-content ul li{font-size:var(--t-base);color:var(--text-2);line-height:1.7}
+.article-content strong{color:var(--text);font-weight:700}
+.article-content .code-block{margin:1.5rem 0}
+.inline-link{color:var(--accent-2);border-bottom:1px solid oklch(62% 0.22 258/.4);transition:border-color .2s}
+.inline-link:hover{border-color:var(--accent-2)}
+.article-callout{display:flex;gap:1rem;padding:1.5rem;background:var(--accent-dim);border:1px solid oklch(62% 0.22 258/.3);border-radius:var(--r-lg);margin:2rem 0}
+.callout-icon{font-size:1.5rem;flex-shrink:0;line-height:1}
+.article-callout strong{display:block;font-size:var(--t-base);font-weight:700;color:var(--text);margin-bottom:.4rem}
+.article-callout p{font-size:var(--t-sm);color:var(--text-2);margin:0}
+.results-table{overflow-x:auto;margin:1.5rem 0}
+.results-table table{width:100%;border-collapse:collapse;font-size:var(--t-sm)}
+.results-table th{padding:.75rem 1rem;text-align:left;font-size:var(--t-xs);font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--text-3);background:var(--bg-2);border-bottom:1px solid var(--border)}
+.results-table td{padding:.75rem 1rem;border-bottom:1px solid var(--border);color:var(--text-2)}
+.results-table tr:last-child td{border-bottom:none}
+.green-val{color:oklch(72% 0.18 155);font-weight:700}
+.post-tag{display:inline-block;padding:.2rem .65rem;border-radius:100px;font-size:var(--t-xs);font-weight:600;background:var(--accent-dim);border:1px solid oklch(62% 0.22 258/.3);color:var(--accent-2)}
+.post-date,.post-read{font-size:var(--t-xs);color:var(--text-3)}
+.related-section{padding:var(--section-gap) var(--px);border-top:1px solid var(--border)}
+.related-title{font-size:var(--t-2xl);font-weight:800;letter-spacing:-.03em;margin-bottom:2.5rem;max-width:var(--max-w);margin-inline:auto;display:block}
+.related-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;max-width:var(--max-w);margin:0 auto}
+.related-card{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--r-xl);overflow:hidden;display:flex;flex-direction:column;transition:border-color .3s,transform .4s var(--ease-quart)}
+.related-card:hover{border-color:var(--border-2);transform:translateY(-4px)}
+.related-img{overflow:hidden;aspect-ratio:16/9}
+.related-img img{width:100%;height:100%;object-fit:cover;transition:transform .7s var(--ease-quart)}
+.related-card:hover .related-img img{transform:scale(1.05)}
+.related-body{padding:1.25rem;display:flex;flex-direction:column;gap:.5rem}
+.related-body h3{font-size:var(--t-base);font-weight:700;letter-spacing:-.02em;line-height:1.35;color:var(--text)}
+@media(max-width:1024px){.article-layout{grid-template-columns:1fr}.article-toc{display:none}.related-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:640px){.article-title{font-size:var(--t-3xl)}.related-grid{grid-template-columns:1fr}}
+</style>
+
+<script type="module" src="/src/blog-post.js"></script>
+</body>
+</html>

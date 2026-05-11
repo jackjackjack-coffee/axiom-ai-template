@@ -1,0 +1,243 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Blog — Axiom AI Platform</title>
+  <meta name="description" content="Engineering insights, product updates, and AI research from the Axiom team." />
+  <link rel="preconnect" href="https://api.fontshare.com" crossorigin />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%233b82f6'/><text x='50%' y='55%' dominant-baseline='middle' text-anchor='middle' fill='white' font-size='18' font-family='system-ui' font-weight='800'>A</text></svg>" />
+</head>
+<body>
+
+<header class="nav" id="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">Axiom</a>
+    <nav class="nav-links">
+      <a href="features.html">Features</a>
+      <a href="pricing.html">Pricing</a>
+      <a href="blog.html" class="active">Blog</a>
+      <a href="#">Docs</a>
+    </nav>
+    <div class="nav-actions">
+      <a href="#" class="nav-ghost">Sign in</a>
+      <a href="#" class="nav-cta magnetic">Get started</a>
+    </div>
+    <button class="nav-hamburger" aria-label="Open menu"><span></span><span></span></button>
+  </div>
+</header>
+
+<!-- ─── Blog hero ─────────────────────────────────────────────────────────── -->
+<section class="blog-hero">
+  <div class="blog-orb" aria-hidden="true"></div>
+  <div class="container">
+    <p class="section-label" style="justify-content:center">From the team</p>
+    <h1 class="blog-heading">Insights &amp; Updates</h1>
+    <p class="blog-sub">Engineering deep-dives, product news, and research from the people building Axiom.</p>
+  </div>
+</section>
+
+<!-- ─── Category filter ───────────────────────────────────────────────────── -->
+<section class="blog-filter-section">
+  <div class="container">
+    <div class="blog-filters" role="tablist">
+      <button class="filter-btn active" role="tab" data-filter="all">All</button>
+      <button class="filter-btn" role="tab" data-filter="engineering">Engineering</button>
+      <button class="filter-btn" role="tab" data-filter="product">Product</button>
+      <button class="filter-btn" role="tab" data-filter="research">Research</button>
+      <button class="filter-btn" role="tab" data-filter="company">Company</button>
+    </div>
+  </div>
+</section>
+
+<!-- ─── Featured post ─────────────────────────────────────────────────────── -->
+<section class="blog-featured-section">
+  <div class="container">
+    <a href="blog-post.html" class="blog-featured">
+      <div class="bf-image">
+        <img src="https://picsum.photos/seed/axiom-ai-featured/1200/600" alt="Featured post" loading="lazy" />
+        <div class="bf-image-overlay"></div>
+      </div>
+      <div class="bf-content">
+        <div class="bf-meta">
+          <span class="post-tag">Engineering</span>
+          <span class="post-date">May 8, 2026</span>
+          <span class="post-read">8 min read</span>
+        </div>
+        <h2 class="bf-title">How we built sub-150ms inference at 10M requests per day</h2>
+        <p class="bf-excerpt">A deep dive into the architectural decisions, caching strategies, and hardware optimizations that let us deliver consistently fast AI inference at massive scale.</p>
+        <div class="bf-author">
+          <div class="author-avatar" style="background:#3b82f6"></div>
+          <span>James Park &mdash; Staff Engineer</span>
+        </div>
+      </div>
+    </a>
+  </div>
+</section>
+
+<!-- ─── Post grid ─────────────────────────────────────────────────────────── -->
+<section class="blog-grid-section">
+  <div class="container">
+    <div class="blog-grid">
+
+      <a href="blog-post.html" class="post-card" data-category="product">
+        <div class="post-img"><img src="https://picsum.photos/seed/axiom-agents/600/400" alt="" loading="lazy" /></div>
+        <div class="post-body">
+          <div class="post-meta"><span class="post-tag">Product</span><span class="post-date">May 5, 2026</span></div>
+          <h3 class="post-title">Introducing Axiom Agents v2: Now with persistent memory</h3>
+          <p class="post-excerpt">Our agents can now remember context across sessions, dramatically improving performance on long-horizon tasks.</p>
+          <div class="post-author"><div class="author-avatar sm" style="background:#8b5cf6"></div><span>Elena Vasquez</span><span class="post-read">5 min</span></div>
+        </div>
+      </a>
+
+      <a href="blog-post.html" class="post-card" data-category="research">
+        <div class="post-img"><img src="https://picsum.photos/seed/axiom-research/600/400" alt="" loading="lazy" /></div>
+        <div class="post-body">
+          <div class="post-meta"><span class="post-tag research">Research</span><span class="post-date">Apr 28, 2026</span></div>
+          <h3 class="post-title">Speculative decoding at scale: our approach to reducing latency 3&times;</h3>
+          <p class="post-excerpt">We explored speculative decoding as a mechanism for dramatically reducing time-to-first-token without sacrificing quality.</p>
+          <div class="post-author"><div class="author-avatar sm" style="background:#06b6d4"></div><span>Dr. Aiko Tanaka</span><span class="post-read">12 min</span></div>
+        </div>
+      </a>
+
+      <a href="blog-post.html" class="post-card" data-category="engineering">
+        <div class="post-img"><img src="https://picsum.photos/seed/axiom-infra/600/400" alt="" loading="lazy" /></div>
+        <div class="post-body">
+          <div class="post-meta"><span class="post-tag">Engineering</span><span class="post-date">Apr 20, 2026</span></div>
+          <h3 class="post-title">Building a global load balancer for AI workloads</h3>
+          <p class="post-excerpt">Traditional load balancers aren't built for token-heavy, variable-duration AI requests. Here's how we built ours.</p>
+          <div class="post-author"><div class="author-avatar sm" style="background:#10b981"></div><span>Marcus Reid</span><span class="post-read">9 min</span></div>
+        </div>
+      </a>
+
+      <a href="blog-post.html" class="post-card" data-category="company">
+        <div class="post-img"><img src="https://picsum.photos/seed/axiom-series/600/400" alt="" loading="lazy" /></div>
+        <div class="post-body">
+          <div class="post-meta"><span class="post-tag company">Company</span><span class="post-date">Apr 14, 2026</span></div>
+          <h3 class="post-title">Axiom raises $42M Series B to accelerate agent infrastructure</h3>
+          <p class="post-excerpt">Today we're announcing our Series B to scale our infrastructure and grow the team building the future of autonomous AI.</p>
+          <div class="post-author"><div class="author-avatar sm" style="background:#f59e0b"></div><span>Sam Okafor, CEO</span><span class="post-read">3 min</span></div>
+        </div>
+      </a>
+
+      <a href="blog-post.html" class="post-card" data-category="engineering">
+        <div class="post-img"><img src="https://picsum.photos/seed/axiom-vector/600/400" alt="" loading="lazy" /></div>
+        <div class="post-body">
+          <div class="post-meta"><span class="post-tag">Engineering</span><span class="post-date">Apr 7, 2026</span></div>
+          <h3 class="post-title">Why we built our own vector database (and when you should too)</h3>
+          <p class="post-excerpt">After evaluating every major vector DB on the market, we decided to build our own. Here's the full reasoning.</p>
+          <div class="post-author"><div class="author-avatar sm" style="background:#ec4899"></div><span>Nina Kowalski</span><span class="post-read">7 min</span></div>
+        </div>
+      </a>
+
+      <a href="blog-post.html" class="post-card" data-category="product">
+        <div class="post-img"><img src="https://picsum.photos/seed/axiom-dashboard/600/400" alt="" loading="lazy" /></div>
+        <div class="post-body">
+          <div class="post-meta"><span class="post-tag">Product</span><span class="post-date">Mar 31, 2026</span></div>
+          <h3 class="post-title">The new Axiom dashboard: designed for AI observability</h3>
+          <p class="post-excerpt">We rebuilt our dashboard from the ground up based on 6 months of user feedback. Here's what's new and why.</p>
+          <div class="post-author"><div class="author-avatar sm" style="background:#f97316"></div><span>Chloe Zhang</span><span class="post-read">4 min</span></div>
+        </div>
+      </a>
+
+    </div>
+
+    <div class="blog-load-more">
+      <button class="btn-outline magnetic">Load more articles</button>
+    </div>
+  </div>
+</section>
+
+<!-- ─── Newsletter ─────────────────────────────────────────────────────────── -->
+<section class="newsletter-section">
+  <div class="container">
+    <div class="newsletter-inner">
+      <div class="nl-glow" aria-hidden="true"></div>
+      <div class="nl-copy">
+        <h2 class="nl-title">Stay in the loop</h2>
+        <p class="nl-sub">Engineering posts, product updates, and AI research &mdash; once a week, no fluff.</p>
+      </div>
+      <form class="nl-form" onsubmit="return false">
+        <input type="email" placeholder="you@company.com" class="nl-input" aria-label="Email address" />
+        <button type="submit" class="btn-primary magnetic">Subscribe</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ─── Footer ────────────────────────────────────────────────────────────── -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand"><div class="footer-brand-name">Axiom</div><p class="footer-tagline">Intelligence at scale.</p></div>
+      <div class="footer-cols">
+        <div class="footer-col"><h4>Product</h4><a href="features.html">Features</a><a href="pricing.html">Pricing</a><a href="#">Changelog</a><a href="#">Roadmap</a></div>
+        <div class="footer-col"><h4>Resources</h4><a href="blog.html">Blog</a><a href="#">Documentation</a><a href="#">API Reference</a><a href="#">Status</a></div>
+        <div class="footer-col"><h4>Company</h4><a href="#">About</a><a href="#">Careers</a><a href="#">Contact</a></div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 Axiom AI, Inc. All rights reserved.</span>
+      <div class="footer-legal"><a href="#">Privacy</a><a href="#">Terms</a></div>
+    </div>
+  </div>
+</footer>
+
+<style>
+.blog-hero{position:relative;padding:10rem var(--px) 5rem;overflow:hidden;text-align:center}
+.blog-orb{position:absolute;width:500px;height:500px;border-radius:50%;background:radial-gradient(circle,oklch(62% 0.22 258/.18),transparent 65%);filter:blur(80px);top:-100px;left:50%;transform:translateX(-50%);pointer-events:none}
+.blog-heading{font-size:var(--t-5xl);font-weight:800;letter-spacing:-.04em;line-height:1.06;margin:0 auto 1rem;position:relative}
+.blog-sub{font-size:var(--t-xl);color:var(--text-2);max-width:52ch;margin:0 auto;position:relative}
+.blog-filter-section{padding:2rem var(--px) 0}
+.blog-filters{display:flex;gap:.5rem;flex-wrap:wrap;max-width:var(--max-w);margin:0 auto;border-bottom:1px solid var(--border);padding-bottom:1.5rem}
+.filter-btn{padding:.4rem 1rem;border-radius:100px;font-size:var(--t-sm);font-weight:500;color:var(--text-3);background:transparent;border:1px solid transparent;transition:all .25s;cursor:pointer}
+.filter-btn:hover{color:var(--text-2);background:var(--bg-3)}
+.filter-btn.active{color:var(--text);background:var(--bg-3);border-color:var(--border-2)}
+.blog-featured-section{padding:3.5rem var(--px) 0}
+.blog-featured{display:grid;grid-template-columns:1.4fr 1fr;gap:0;max-width:var(--max-w);margin:0 auto;background:var(--bg-card);border:1px solid var(--border);border-radius:var(--r-xl);overflow:hidden;transition:border-color .3s,transform .4s var(--ease-quart)}
+.blog-featured:hover{border-color:var(--border-2);transform:translateY(-4px)}
+.bf-image{position:relative;overflow:hidden;aspect-ratio:16/9}
+.bf-image img{width:100%;height:100%;object-fit:cover;transition:transform .8s var(--ease-quart)}
+.blog-featured:hover .bf-image img{transform:scale(1.04)}
+.bf-image-overlay{position:absolute;inset:0;background:linear-gradient(135deg,oklch(8% 0.012 258/.4),transparent)}
+.bf-content{padding:2.5rem;display:flex;flex-direction:column;justify-content:center}
+.bf-meta{display:flex;align-items:center;gap:1rem;margin-bottom:1.25rem;flex-wrap:wrap}
+.post-tag{display:inline-block;padding:.2rem .65rem;border-radius:100px;font-size:var(--t-xs);font-weight:600;background:var(--accent-dim);border:1px solid oklch(62% 0.22 258/.3);color:var(--accent-2)}
+.post-tag.research{background:oklch(72% 0.18 155/.1);border-color:oklch(72% 0.18 155/.3);color:oklch(72% 0.18 155)}
+.post-tag.company{background:oklch(72% 0.18 60/.1);border-color:oklch(72% 0.18 60/.3);color:oklch(72% 0.18 60)}
+.post-date,.post-read{font-size:var(--t-xs);color:var(--text-3)}
+.bf-title{font-size:var(--t-2xl);font-weight:800;letter-spacing:-.03em;line-height:1.2;margin-bottom:1rem;text-wrap:balance}
+.bf-excerpt{font-size:var(--t-base);color:var(--text-2);line-height:1.65;margin-bottom:1.5rem}
+.bf-author{display:flex;align-items:center;gap:.75rem;font-size:var(--t-sm);color:var(--text-2)}
+.author-avatar{width:32px;height:32px;border-radius:50%;flex-shrink:0;opacity:.85}
+.author-avatar.sm{width:24px;height:24px}
+.blog-grid-section{padding:3.5rem var(--px) var(--section-gap)}
+.blog-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;max-width:var(--max-w);margin:0 auto}
+.post-card{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--r-xl);overflow:hidden;display:flex;flex-direction:column;transition:border-color .3s,transform .4s var(--ease-quart)}
+.post-card:hover{border-color:var(--border-2);transform:translateY(-4px)}
+.post-img{overflow:hidden;aspect-ratio:16/9}
+.post-img img{width:100%;height:100%;object-fit:cover;transition:transform .7s var(--ease-quart)}
+.post-card:hover .post-img img{transform:scale(1.05)}
+.post-body{padding:1.5rem;flex:1;display:flex;flex-direction:column}
+.post-meta{display:flex;align-items:center;gap:.75rem;margin-bottom:1rem;flex-wrap:wrap}
+.post-title{font-size:var(--t-lg);font-weight:700;letter-spacing:-.02em;line-height:1.3;margin-bottom:.6rem;text-wrap:balance;flex:1}
+.post-excerpt{font-size:var(--t-sm);color:var(--text-2);line-height:1.6;margin-bottom:1.25rem}
+.post-author{display:flex;align-items:center;gap:.6rem;font-size:var(--t-xs);color:var(--text-3);margin-top:auto}
+.post-author span:last-child{margin-left:auto}
+.blog-load-more{display:flex;justify-content:center;padding-top:3rem;max-width:var(--max-w);margin:0 auto}
+.newsletter-section{padding:var(--section-gap) var(--px)}
+.newsletter-inner{position:relative;display:flex;align-items:center;justify-content:space-between;gap:3rem;padding:3.5rem;background:var(--bg-2);border:1px solid var(--border);border-radius:var(--r-xl);max-width:var(--max-w);margin:0 auto;flex-wrap:wrap;overflow:hidden}
+.nl-glow{position:absolute;top:50%;left:30%;transform:translate(-50%,-50%);width:400px;height:400px;border-radius:50%;background:radial-gradient(circle,oklch(62% 0.22 258/.12),transparent 65%);filter:blur(40px);pointer-events:none}
+.nl-title{font-size:var(--t-2xl);font-weight:800;letter-spacing:-.03em;margin-bottom:.5rem;position:relative}
+.nl-sub{font-size:var(--t-base);color:var(--text-2);max-width:40ch;position:relative}
+.nl-form{display:flex;gap:.75rem;flex-shrink:0;position:relative;flex-wrap:wrap}
+.nl-input{padding:.8rem 1.25rem;background:var(--bg-3);border:1px solid var(--border-2);border-radius:var(--r);color:var(--text);font-family:var(--font);font-size:var(--t-base);outline:none;transition:border-color .25s;min-width:240px}
+.nl-input::placeholder{color:var(--text-3)}
+.nl-input:focus{border-color:var(--accent)}
+@media(max-width:900px){.blog-featured{grid-template-columns:1fr}.blog-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:580px){.blog-grid{grid-template-columns:1fr}.newsletter-inner{flex-direction:column}.nl-form{width:100%}.nl-input{width:100%}}
+</style>
+
+<script type="module" src="/src/blog.js"></script>
+</body>
+</html>

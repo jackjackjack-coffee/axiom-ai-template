@@ -90,6 +90,39 @@ export function initNav() {
       a.classList.add('active')
     }
   })
+
+  // Mobile menu
+  const hamburger = nav.querySelector('.nav-hamburger')
+  if (!hamburger) return
+
+  const mobileMenu = document.createElement('div')
+  mobileMenu.className = 'nav-mobile'
+  mobileMenu.innerHTML = `
+    <a href="features.html">Features</a>
+    <a href="pricing.html">Pricing</a>
+    <a href="blog.html">Blog</a>
+    <a href="#">Docs</a>
+    <a href="#" class="btn-primary lg" style="margin-top:2rem">Get started free</a>
+  `
+  document.body.appendChild(mobileMenu)
+
+  const openMenu = () => {
+    hamburger.classList.add('open')
+    mobileMenu.classList.add('open')
+    document.body.style.overflow = 'hidden'
+    hamburger.setAttribute('aria-label', 'Close menu')
+  }
+  const closeMenu = () => {
+    hamburger.classList.remove('open')
+    mobileMenu.classList.remove('open')
+    document.body.style.overflow = ''
+    hamburger.setAttribute('aria-label', 'Open menu')
+  }
+
+  hamburger.addEventListener('click', () => {
+    hamburger.classList.contains('open') ? closeMenu() : openMenu()
+  })
+  mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMenu))
 }
 
 /* ─── Split text reveal ──────────────────────────────────────────────────── */

@@ -422,7 +422,7 @@ button { font: inherit; cursor: pointer; border: none; background: none; }
 /* ─── Footer ─────────────────────────────────────────────────────────────── */
 .footer {
   border-top: 1px solid var(--border);
-  padding: var(--section-gap) var(--px) 3rem;
+  padding: 4rem var(--px) 3rem;
 }
 .footer-inner {
   max-width: var(--max-w);
